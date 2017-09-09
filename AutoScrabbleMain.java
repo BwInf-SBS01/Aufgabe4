@@ -13,18 +13,28 @@ public class AutoScrabbleMain {
 
 	public static void main(String[] args) {
 		importiereKennzeichen("kuerzelliste.txt");
-		System.out.println(istMöglich("NIKLAS"));
+		System.out.println(istMöglich(""));
 	}
 
-	private static boolean istMöglich(String string) {
-		boolean antwort;
-		string.toUpperCase();
-		//TODO
-		
-		antwort = kuerzel.contains(string.substring(0, 2)) && kuerzel.contains(string.substring(2, 4));
-		return antwort;
+	private static boolean istMöglich(String s) {
+		s = s.toUpperCase();
+		char[] buchstaben = s.toCharArray();
+		int laenge = s.length();
+		boolean gefunden = false; 
+		int i = 0;
+		do {
+			
+		}while(i<laenge);
+		/*
+		 * TODO Möglichkeiten: kennz-egal 1-1 1-2 2-1 2-2 3-1 3-2
+		 */
+
+		return gefunden;
 	}
-	
+
+	private boolean check(String kennzeichen) {
+		return kuerzel.contains(kennzeichen);
+	}
 
 	private static void importiereKennzeichen(String file) {
 		FileReader fr = null;
@@ -32,6 +42,7 @@ public class AutoScrabbleMain {
 			fr = new FileReader(new File("src/autoScrabble/" + file));
 			@SuppressWarnings("resource")
 			BufferedReader reader = new BufferedReader(fr);
+			
 			String line;
 			do {
 				line = reader.readLine();
