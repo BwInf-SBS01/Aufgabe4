@@ -20,7 +20,7 @@ public class Baum {
 	@Override
 	public String toString() {
 
-		return "Baum[length=" + string.length() + ";string=" + string + "]";
+		return "Baum[" + string + "]";
 	}
 
 	public boolean isGefunden() {

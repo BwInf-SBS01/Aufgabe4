@@ -9,12 +9,10 @@ public class KnotenB {
 		if (!baum.isGefunden()) {
 			if (stelle + 1 == length) {
 				segment = baum.getString().substring(stelle, stelle + 1);
-				System.out.print("gefunden:");
 				baum.setGefunden(this);
 			}
 			if (stelle + 2 == length) {
 				segment = baum.getString().substring(stelle, stelle + 2);
-				System.out.print("gefunden:");
 				baum.setGefunden(this);
 			}
 			if (stelle + 1 < length) {
