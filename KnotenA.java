@@ -1,44 +1,43 @@
 package autoScrabble;
 
+
+
 public class KnotenA {
-	private KnotenB child1 = null;
-	private KnotenB child2 = null;
-	private KnotenB child3 = null;
+	private KnotenB parent;
+	private String segment;
 
-	public KnotenA(int stelle, int length, Baum baum) throws Exception {
-		if (stelle + 1 + 1 <= length) {
+	public KnotenA(int stelle, int length, Baum baum, KnotenB parent) {
+		this.parent = parent;
+		if (!baum.isGefunden()) {
+			if (stelle + 1 + 1 <= length) {
+			}
 			if (AutoScrabbleMain.isMoeglich(baum.getString().substring(stelle, stelle + 1))) {
-				child1 = new KnotenB(stelle + 1, length, baum);
+				new KnotenB(stelle + 1, length, baum, this);
+				segment = baum.getString().substring(stelle, stelle + 1);
+			}
+
+			if (stelle + 2 + 1 <= length) {
+				if (AutoScrabbleMain.isMoeglich(baum.getString().substring(stelle, stelle + 2))) {
+					new KnotenB(stelle + 2, length, baum, this);
+					segment = baum.getString().substring(stelle, stelle + 2);
+				}
+			}
+
+			if (stelle + 3 + 1 <= length) {
+				if (AutoScrabbleMain.isMoeglich(baum.getString().substring(stelle, stelle + 3))) {
+					new KnotenB(stelle + 3, length, baum, this);
+					segment = baum.getString().substring(stelle, stelle + 3);
+				}
 			}
 		}
-		if (child1 != null && child1.gefunden) {
-			return;
-		}
-		if (stelle + 2 + 1 <= length) {
-			if (AutoScrabbleMain.isMoeglich(baum.getString().substring(stelle, stelle + 2))) {
-				child2 = new KnotenB(stelle + 2, length, baum);
-			}
-		}
-		if (child2 != null && child2.gefunden) {
-			return;
-		}
-		if (stelle + 3 + 1 <= length) {
-			if (AutoScrabbleMain.isMoeglich(baum.getString().substring(stelle, stelle + 3))) {
-				child3 = new KnotenB(stelle + 3, length, baum);
-			}
-		}
+
 	}
 
-	public KnotenB getChild1() {
-		return child1;
-	}
-
-	public KnotenB getChild2() {
-		return child2;
-	}
-
-	public KnotenB getChild3() {
-		return child3;
+	public void getParent(java.util.ArrayList<String> list) {
+		list.add(segment);
+		if(parent!=null) {
+			parent.getParent(list);
+		}
 	}
 
 }

@@ -1,35 +1,37 @@
 package autoScrabble;
 
 public class KnotenB {
-	private KnotenA child1 = null;
-	private KnotenA child2 = null;
-	public boolean gefunden = false;
+	private KnotenA parent;
+	private String segment;
 
-	public KnotenB(int stelle, int length, Baum baum) throws Exception {
-		if (stelle + 1 == length) {
-			//System.out.println("gefunden");
-			gefunden = true;
-			throw new Exception("gef:"+baum.getString());
+	public KnotenB(int stelle, int length, Baum baum, KnotenA parent) {
+		this.parent = parent;
+		if (!baum.isGefunden()) {
+			if (stelle + 1 == length) {
+				segment = baum.getString().substring(stelle, stelle + 1);
+				System.out.print("gefunden:");
+				baum.setGefunden(this);
+			}
+			if (stelle + 2 == length) {
+				segment = baum.getString().substring(stelle, stelle + 2);
+				System.out.print("gefunden:");
+				baum.setGefunden(this);
+			}
+			if (stelle + 1 < length) {
+				segment = baum.getString().substring(stelle, stelle + 1);
+				new KnotenA(stelle + 1, length, baum, this);
+			}
+			if (stelle + 2 < length) {
+				segment = baum.getString().substring(stelle, stelle + 2);
+				new KnotenA(stelle + 2, length, baum, this);
+			}
 		}
-		if (stelle + 2 == length) {
-			//System.out.println("gefunden");
-			gefunden = true;
-			throw new Exception("gef:"+baum.getString());
-		}
-		if (stelle + 1 < length) {
-			child1 = new KnotenA(stelle + 1, length, baum);
-		}
-		if (stelle + 2 < length) {
-			child2 = new KnotenA(stelle + 2, length, baum);
-		}
-
 	}
 
-	public KnotenA getChild1() {
-		return child1;
-	}
-
-	public KnotenA getChild2() {
-		return child2;
+	public void getParent(java.util.ArrayList<String> list) {
+		list.add(segment);
+		if(parent!=null) {
+			parent.getParent(list);
+		}
 	}
 }

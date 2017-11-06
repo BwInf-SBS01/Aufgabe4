@@ -23,7 +23,6 @@ public class AutoScrabbleMain {
 		schreibeWort("TRUMP");
 		schreibeWort("TSCHÜSS");
 		schreibeWort("VERKEHRSWEGEPLANUNGSBESCHLEUNIGUNGSGESETZ");
-		
 
 	}
 
@@ -33,16 +32,10 @@ public class AutoScrabbleMain {
 		string = string.replace("Ö", "OE");
 		string = string.replace("Ü", "UE");
 		Baum baum;
-		try {
-			baum = new Baum(string);
-			System.out.println(baum);
-			
-		} catch (Exception e) {
-			System.err.println(e.getMessage());
-		} finally {
-			baum = null;
-		}
-		
+		baum = new Baum(string);
+		System.out.println(baum);
+		baum.print();
+		baum = null;
 
 	}
 
