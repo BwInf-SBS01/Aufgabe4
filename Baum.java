@@ -10,7 +10,8 @@ public class Baum {
 
 	public Baum(String string) {
 		this.string = string;
-		new KnotenA(0, string.length(), this, null);
+
+		new KnotenA(0, string.length() - 1, this, null);
 	}
 
 	public String getString() {
@@ -20,7 +21,7 @@ public class Baum {
 	@Override
 	public String toString() {
 
-		return "Baum[" + string + "]";
+		return "[" + string + "]";
 	}
 
 	public boolean isGefunden() {
@@ -31,17 +32,18 @@ public class Baum {
 		this.gefunden = true;
 		gefundenerKnoten = knoten;
 	}
+
 	public void print() {
-		if(gefunden) {
+		if (gefunden) {
 			ArrayList<String> list = new ArrayList<String>();
 			gefundenerKnoten.getParent(list);
 			list.trimToSize();
-			for (int i = 0; i < list.size(); i+=2) {
-				System.out.print(list.get(list.size()-i-1)+"-"+list.get(list.size()-i-2)+" ");
+			for (int i = 0; i < list.size(); i += 2) {
+				System.out.print(list.get(list.size() - i - 1) + "-" + list.get(list.size() - i - 2) + " ");
 			}
 			System.out.println(" ");
 			System.out.println(" ");
-		}else {
+		} else {
 			System.out.println("nicht Darstellbar");
 			System.out.println(" ");
 		}

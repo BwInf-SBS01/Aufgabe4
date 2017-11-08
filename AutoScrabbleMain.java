@@ -11,6 +11,8 @@ public class AutoScrabbleMain {
 	private static List<String> kuerzel = importiereKennzeichen();
 
 	public static void main(String[] args) {
+		
+		
 		schreibeWort("DONAUDAMPFSCHIFFFAHRTSKAPITÄNSMÜTZE");
 		schreibeWort("BIBER");
 		schreibeWort("CLINTON");
@@ -23,7 +25,13 @@ public class AutoScrabbleMain {
 		schreibeWort("TRUMP");
 		schreibeWort("TSCHÜSS");
 		schreibeWort("VERKEHRSWEGEPLANUNGSBESCHLEUNIGUNGSGESETZ");
+		
+		schreibeWort("timo");
+		
+		
 
+		 
+		System.out.println("fertig");
 	}
 
 	private static void schreibeWort(String string) {
@@ -50,7 +58,8 @@ public class AutoScrabbleMain {
 			BufferedReader reader = new BufferedReader(new FileReader(new File("src/autoScrabble/" + "kuerzel.list")));
 			String line;
 			while ((line = reader.readLine()) != null) {
-				kuerzel.add(line);
+				kuerzel.add(line.trim());
+	
 			}
 
 		} catch (IOException e) {
