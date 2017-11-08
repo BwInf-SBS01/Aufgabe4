@@ -11,8 +11,7 @@ public class AutoScrabbleMain {
 	private static List<String> kuerzel = importiereKennzeichen();
 
 	public static void main(String[] args) {
-		
-		
+
 		schreibeWort("DONAUDAMPFSCHIFFFAHRTSKAPITÄNSMÜTZE");
 		schreibeWort("BIBER");
 		schreibeWort("CLINTON");
@@ -25,13 +24,25 @@ public class AutoScrabbleMain {
 		schreibeWort("TRUMP");
 		schreibeWort("TSCHÜSS");
 		schreibeWort("VERKEHRSWEGEPLANUNGSBESCHLEUNIGUNGSGESETZ");
-		
-		schreibeWort("timo");
-		
-		
 
-		 
 		System.out.println("fertig");
+	}
+
+	private static void istMoeglich(String string) {
+		string = string.toUpperCase();
+		string = string.replace("Ä", "AE");
+		string = string.replace("Ö", "OE");
+		string = string.replace("Ü", "UE");
+		Baum baum;
+		baum = new Baum(string);
+		System.out.print(baum);
+		if (baum.isGefunden()) {
+			System.out.print(" ist möglich");
+		} else {
+			System.out.print(" ist nicht möglich");
+		}
+		System.out.println("");
+		baum = null;
 	}
 
 	private static void schreibeWort(String string) {
@@ -59,7 +70,7 @@ public class AutoScrabbleMain {
 			String line;
 			while ((line = reader.readLine()) != null) {
 				kuerzel.add(line.trim());
-	
+
 			}
 
 		} catch (IOException e) {

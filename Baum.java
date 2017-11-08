@@ -41,12 +41,10 @@ public class Baum {
 			for (int i = 0; i < list.size(); i += 2) {
 				System.out.print(list.get(list.size() - i - 1) + "-" + list.get(list.size() - i - 2) + " ");
 			}
-			System.out.println(" ");
-			System.out.println(" ");
 		} else {
-			System.out.println("nicht Darstellbar");
-			System.out.println(" ");
+			System.out.print("nicht Darstellbar");
 		}
+		System.out.println("");
 	}
 
 }
