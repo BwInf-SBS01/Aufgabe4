@@ -41,7 +41,7 @@ public class AutoScrabbleMain {
     System.out.println("\n");
   }
 
-  private static void istMoeglich(String string) {
+  private static void istMoeglich(String string) { // erstellt einen neuen Baum, und gibt aus, ob das Kennzeichen darstellbar ist
     string = string.toUpperCase();
     string = string.replace("Ä", "AE");
     string = string.replace("Ö", "OE");
@@ -58,7 +58,7 @@ public class AutoScrabbleMain {
     baum = null;
   }
 
-  private static void schreibeWort(String string) {
+  private static void schreibeWort(String string) { // erstellt einen neuen Baum, und gibt die einzelnen Kennzeichen mit der Baum.print() Methode aus
     string = string.toUpperCase();
     string = string.replace("Ä", "AE");
     string = string.replace("Ö", "OE");
@@ -71,12 +71,12 @@ public class AutoScrabbleMain {
 
   }
 
-  public static boolean istVorhanden(String string) {
+  public static boolean istVorhanden(String string) { // gibt einen Wahrheitswert zurück, ob das Kürzel in der Liste gespeichert ist
     return kuerzel.contains(string);
   }
 
-  private static List<String> importiereKennzeichen() {
-    List<String> kuerzel = new ArrayList<String>(684);
+  private static List<String> importiereKennzeichen() { // ließt die Kürzelliste ein
+    List<String> kuerzel = new ArrayList<String>(683);
     try {
       @SuppressWarnings("resource")
       BufferedReader reader = new BufferedReader(new FileReader(new File("kuerzel.list")));
@@ -85,7 +85,7 @@ public class AutoScrabbleMain {
         kuerzel.add(line.trim());
       }
     } catch (IOException e) {
-      System.err.println("Couldn't load file!");
+      System.err.println("Liste: 'kuerzel.list' konnte nicht geladen werden !!!");
     }
     return kuerzel;
   }
